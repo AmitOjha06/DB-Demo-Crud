@@ -18,6 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author Amit.Ojha
+ */
 @RestController
 @RequestMapping("/api/db-demo/employee")
 @OpenAPIDefinition(info = @Info(title = "Employee Controller", description = "Employee details Rest API",
@@ -29,6 +32,12 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    /**
+     * This will give us a Response object
+     * contains status code, message and
+     * employee list.
+     * @return Response
+     */
     @Operation(summary = "Get All employee list")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK",
@@ -46,6 +55,12 @@ public class EmployeeController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /**
+     * This will give us employee details
+     * by id.
+     * @param empId
+     * @return
+     */
     @Operation(summary = "Get employee by Emp-Id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK",
@@ -64,6 +79,11 @@ public class EmployeeController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /**
+     * This will add new employee.
+     * @param employeeRequest
+     * @return
+     */
     @Operation(summary = "Add employee")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK",
@@ -83,6 +103,12 @@ public class EmployeeController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /**
+     * This will update existing employee.
+     * @param empId
+     * @param employeeRequest
+     * @return
+     */
     @Operation(summary = "Update employee by Emp-Id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK",
@@ -101,6 +127,12 @@ public class EmployeeController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /**
+     * This will delete an employee
+     * by id.
+     * @param empId
+     * @return
+     */
     @Operation(summary = "Delete employee by Emp-Id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK",
